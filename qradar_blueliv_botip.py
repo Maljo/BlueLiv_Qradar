@@ -10,7 +10,6 @@ qradar_ref_set = ""
 qradar_server = ""
 QRadar_POST_url = "https://" + qradar_server + "/api/reference_data/sets/bulk_load/" + qradar_ref_set
 QRadar_headers = {'SEC': '', 'Content-Type': 'application/json', 'Version': '9.0', 'Accept':'application/json'}
-Qradar_cert = 'qradar.pem'
 
 LOG_FILE = 'blueliv.log'
 logging.basicConfig(filename=LOG_FILE)
@@ -37,5 +36,5 @@ json.dumps(ip_list)
 
 print(ip_list)
 
-p = requests.post(QRadar_POST_url, headers=QRadar_headers, json=ip_list, verify=Qradar_cert)
+p = requests.post(QRadar_POST_url, headers=QRadar_headers, json=ip_list, verify=False)
 p.raise_for_status() #Raise exception on HTTP errors
